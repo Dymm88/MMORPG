@@ -10,7 +10,7 @@ class Person(models.Model):
     mail = models.EmailField(max_length=200)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
 
 
 class Announcement(models.Model):

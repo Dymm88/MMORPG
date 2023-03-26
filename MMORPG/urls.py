@@ -21,4 +21,5 @@ urlpatterns = [
     path('pages/', include('django.contrib.flatpages.urls')),
     path('', include('myapp.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('', include('register.urls')),
 ]
