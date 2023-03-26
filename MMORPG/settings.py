@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'ckeditor',
     'register',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     ]
 
 MIDDLEWARE = [
@@ -72,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -142,5 +146,17 @@ MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_CONFIRMATION_HMAC = True
