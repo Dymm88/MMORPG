@@ -1,14 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from MMORPG.myapp.conf import CATEGORIES
+from .conf import CATEGORIES
 
 
 class Person(models.Model):
     """Пользователи"""
-    name = models.CharField(max_length=150, unique=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='photos')
+    name = models.OneToOneField(User, on_delete=models.CASCADE)
     mail = models.EmailField(max_length=200)
 
     def __str__(self):
@@ -20,7 +18,7 @@ class Announcement(models.Model):
     author = models.ForeignKey(Person, on_delete=models.CASCADE)
     header = models.CharField(max_length=200, unique=True)
     category = models.CharField(max_length=2, choices=CATEGORIES)
-    text = models.TextField()
+    content = models.TextField()
     date_create = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
