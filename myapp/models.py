@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-
+from ckeditor_uploader.fields import RichTextUploadingField
 from .conf import CATEGORIES
 
 
@@ -18,7 +18,7 @@ class Announcement(models.Model):
     author = models.ForeignKey(Person, on_delete=models.CASCADE)
     header = models.CharField(max_length=200, unique=True)
     category = models.CharField(max_length=2, choices=CATEGORIES)
-    content = models.TextField()
+    content = RichTextUploadingField(blank=True, null=True)
     date_create = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
