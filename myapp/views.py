@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Announcement
+from .models import Announcement, Review
 
 
 def index(request):
@@ -44,3 +44,11 @@ def work_room(request):
         'posts': Announcement.objects.filter(author=request.user)
     }
     return render(request, 'work_room.html', context)
+
+
+class ReviewCreate(CreateView):
+    """отклики"""
+    model = Review
+    template_name = 'reviews.html'
+    fields = ['text']
+    success_url = reverse_lazy('announcements.html')
