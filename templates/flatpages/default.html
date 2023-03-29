@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">MMORPG</a>
+    <a class="navbar-brand" href="/">MMORPG</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,10 +22,10 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" href="#">Объявления</a>
+            <a class="nav-link" href="/announcements/">Объявления</a>
             {% if user.is_authenticated %}
             <p class="nav-link">{{ user.username }}</p>
-            <a class="nav-link" href="#">Кабинет</a>
+            <a class="nav-link" href="/work_room/">Кабинет</a>
             <a class="nav-link" href="/logout/">Выйти</a>
             {% else %}
             <a class="nav-link" href="/signup/">Регистрация</a>

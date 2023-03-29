@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'flatpages/default.html' %}
 
-</body>
-</html>
+{% block title %}
+{{ post.header }}
+{% endblock %}
+
+
+{% block content %}
+
+{{ announcement.header }}
+{{ announcement.content }}
+{{ announcement.date_create }}
+
+<br><br><br><br>
+<button>
+    <a href="{% url 'delete' %}">Delete</a>
+</button>
+{% endblock %}

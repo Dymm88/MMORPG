@@ -28,12 +28,19 @@ class AnnouncementCreate(CreateView):
     """Создание объявления"""
     model = Announcement
     template_name = 'create.html'
-    context_object_name = 'create'
-    fields = ['header', 'category', 'content']
-    success_url = reverse_lazy('announcements.html')
+    fields = ['author', 'header', 'category', 'content']
+    success_url = reverse_lazy('announcements')
 
 
 class AnnouncementDelete(DeleteView):
     """Удаление объявления"""
     model = Announcement
+    template_name = 'delete.html'
     success_url = reverse_lazy('announcements.html')
+
+
+def work_room(request):
+    context = {
+        'posts': Announcement.objects.filter(author=request.user)
+    }
+    return render(request, 'work_room.html', context)

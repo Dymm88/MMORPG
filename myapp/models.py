@@ -15,7 +15,7 @@ class Person(models.Model):
 
 class Announcement(models.Model):
     """Объявления"""
-    author = models.ForeignKey(Person, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     header = models.CharField(max_length=200, unique=True)
     category = models.CharField(max_length=2, choices=CATEGORIES)
     content = RichTextUploadingField(blank=True, null=True)

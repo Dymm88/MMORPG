@@ -1,0 +1,23 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="position-absolute top-50 start-50">
+<table>
+    {% for post in posts %}
+    <tr>
+        <td><a href="{% url 'announcement' post.pk %}">{{ post.header }}</a></td>
+        <td>{{ post.text }}</td>
+        <td>{{ post.date_create }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<button style="block">
+    <a href="/create/">Добавить</a>
+</button>
+
+</div>
+{% endblock %}

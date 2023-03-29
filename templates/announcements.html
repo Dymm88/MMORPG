@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'flatpages/default.html' %}
 
-</body>
-</html>
+{% block title %}
+{% endblock %}
+{% block content %}
+<h2>Все объявления</h2>
+<table>
+    {% for ann in announcements %}
+    <tr>
+        <td>{{ ann.author }}</td>
+        <td>{{ ann.header }}</td>
+        <td>{{ ann.content }}</td>
+        <td>{{ ann.date_create }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
